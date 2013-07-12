@@ -19,9 +19,6 @@ s3g/virtualenv/bin/activate:
 brews:
 ifeq ($(UNAME), Linux)
 	@echo "Configuring for Linux"
-	@apt-get install python-dev -y || echo "Python dev already installed [or failed]"
-	@apt-get install avrdude -y || echo "AVRDude already installed [or failed]"
-	@apt-get install scons -y || echo "scons already installed [or failed]"
 else
 	@echo "Configuring for Mac OS X"
 	"brew install avrdude || echo "AVRDude already brew installed [or failed]"
