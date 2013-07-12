@@ -1,4 +1,5 @@
 #-*- mode:makefile-gmake; -*-
+UNAME = $(shell uname)
 
 all: | brews
 	$(MAKE) grue
@@ -16,7 +17,15 @@ s3g/virtualenv/bin/activate:
 
 ## System
 brews:
-	@brew install avrdude || echo "AVRDude already brew installed [or failed]"
+ifeq ($(UNAME), Linux)
+	@echo "Configuring for Linux"
+	@apt-get install avrdude -y || echo "AVRDude already installed [or failed]"
+	@apt-get install scons -y || echo "scons already installed [or failed]"
+else
+	@echo "Configuring for Mac OS X"
+	"brew install avrdude || echo "AVRDude already brew installed [or failed]"
 	@brew install scons || echo "scons already brew installed [or failed]"
+endif
+
 
 .PHONY: all brews grue s3g
