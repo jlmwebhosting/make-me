@@ -17,6 +17,7 @@ s3g/virtualenv/bin/activate:
 
 ## System
 brews:
+	@echo "$(UNAME)"
 	ifeq ($(UNAME), Linux)
 		@echo "Linux is already pre-configured."
 	else
