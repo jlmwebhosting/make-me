@@ -3,7 +3,7 @@ ROOT = $(shell pwd)
 USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
 
 ## Apps
-GRUE ?= $(ROOT)/vendor/Miracle-Grue/bin/miracle_grue
+GRUE ?= $(ROOT)/vendor/Miracle-Grue/obj/bin/miracle_grue
 GRUE_CONFIG ?= default
 PRINT ?= $(ROOT)/bin/print_gcode -m "The Replicator 2" -p /dev/$(USB) -f
 
