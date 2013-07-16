@@ -17,13 +17,13 @@ s3g/virtualenv/bin/activate:
 
 ## System
 brews:
-ifeq ($(UNAME), Linux)
-	@echo "Configuring for Linux"
-else
-	@echo "Configuring for Mac OS X"
-	"brew install avrdude || echo "AVRDude already brew installed [or failed]"
-	@brew install scons || echo "scons already brew installed [or failed]"
-endif
+	ifeq ($(UNAME), Linux)
+		@echo "Linux is already pre-configured."
+	else
+		@echo "Configuring for Mac OS X"
+		@brew install avrdude || echo "AVRDude already brew installed [or failed]"
+		@brew install scons || echo "scons already brew installed [or failed]"
+	endif
 
 
 .PHONY: all brews grue s3g
