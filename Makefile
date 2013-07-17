@@ -1,6 +1,17 @@
 #-*- mode:makefile-gmake; -*-
 ROOT = $(shell pwd)
-USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
+
+
+#determin USB mount location
+UNAME = $(shell uname)
+ifeq ($(UNAME), Linux)
+	USB ?= $(shell ls /dev/ | grep ttyACM0 | head -1)
+else
+	USB ?= $(shell ls /dev/ | grep tty.usbmodem | head -1)
+endif
+
+@echo $USB
+
 
 ## Apps
 GRUE ?= $(ROOT)/vendor/Miracle-Grue/obj/bin/miracle_grue
